@@ -15,7 +15,7 @@ describe EnigmaShift do
       enigma_shift = EnigmaShift.new
 
       expect(enigma_shift.enigma_key).to eq ''
-      expect(enigma_shift.date).to eq ('27/08/20')
+      expect(enigma_shift.date).to eq '27/08/20'
       expect(enigma_shift.shifts).to eq ({})
     end
   end

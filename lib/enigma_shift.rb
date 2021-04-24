@@ -3,9 +3,9 @@ class EnigmaShift
               :date,
               :shifts
 
-  def initialize(enigma_key = '')
+  def initialize(enigma_key = '', date = Date.today.strftime('%d/%m/%y') )
     @enigma_key = enigma_key
-    @date = Date.today.strftime('%d/%m/%y')
+    @date = date
     @shifts = {}
   end
 
