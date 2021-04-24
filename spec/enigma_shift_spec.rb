@@ -14,37 +14,46 @@ describe EnigmaShift do
       allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
       enigma_shift = EnigmaShift.new
 
-      expect(enigma_shift.date).to eq ('08/27/20')
+      expect(enigma_shift.enigma_key).to eq 0
+      expect(enigma_shift.date).to eq ('27/08/20')
       expect(enigma_shift.shifts).to eq ([])
     end
   end
 
-  # Rethink how to test this
-  # describe '#generate_random_key' do
-  #   it 'generates random 5 digit key number' do
-  #     enigma_shift = EnigmaShift.new
-     
-  #     enigma_shift.generate_random_key
-  #     expect(enigma_shift.key_number).to eq 12345 
-  #   end
-  # end
   describe '#generate_enigma_shift' do
-    it 'generates key' do
-      
-      expect(enigma_shift.generate_key).to eq expected 
+    it 'can generate keys wtih enigma key' do
+      enigma_shift = EnigmaShift.new('02345')
+      expected = {:A => 02, :B => 23, :C => 34, :D => 45}
+ 
+      expect(enigma_shift.generate_enigma_keys).to eq expected
+    end
+
+    it 'can generate keys with random key numbers' do
+      enigma_shift = EnigmaShift.new
+      allow(enigma_shift).to receive(:generate_random_key) {'12345'}
+      expected = {:A => 12, :B => 23, :C => 34, :D => 45}
+
+      expect(enigma_shift.generate_enigma_keys).to eq expected 
     end
   end
 
-  describe '#generate_offset' do
-    it 'generates offset from date' do
-      enigma_shift = EnigmaShift
-      
-      expected = [ { :A :  },
-                   { :B :  },
-                   { :C :  },
-                   { :D :  }
-                  ]
-      expect(enigma_shift.generate_offset).to eq expected
-    end 
+  describe '#convert_to_pairs' do
+    it 'converts enigma key to digit pairs ' do
+      enigma_shift = EnigmaShift.new('12345')
+      expected = ['12', '23', '34', '45']
+
+      expect(enigma_shift.convert_to_pairs('12345')).to eq expected
+    end
   end
+
+  # describe '#generate_offset' do
+  #   it 'generates offset from date' do
+  #     enigma_shift = EnigmaShift.new
+  #     allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
+
+  #     expected = { :A => 2, :B => 4, :C => 0, :D => 0 }
+
+  #     expect(enigma_shift.generate_offset).to eq expected
+  #   end 
+  # end
 end 
