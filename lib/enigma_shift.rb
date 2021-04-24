@@ -39,5 +39,9 @@ class EnigmaShift
         enigma_key[index..index + 1]
     end
   end
+
+  def generate_offset(date)
+    require 'pry'; binding.pry
+  end
 end
 

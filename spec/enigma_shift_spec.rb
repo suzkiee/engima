@@ -20,7 +20,7 @@ describe EnigmaShift do
     end
   end
 
-  describe '#generate_enigma_shift' do
+  describe '#generate_enigma_keys' do
     it 'can generate keys wtih enigma key' do
       enigma_shift = EnigmaShift.new('02345')
       expected = {:A => 02, :B => 23, :C => 34, :D => 45}
@@ -46,14 +46,14 @@ describe EnigmaShift do
     end
   end
 
-  # describe '#generate_offset' do
-  #   it 'generates offset from date' do
-  #     enigma_shift = EnigmaShift.new
-  #     allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
+  describe '#generate_offset' do
+    it 'generates offset from date' do
+      enigma_shift = EnigmaShift.new
+      allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
 
-  #     expected = { :A => 2, :B => 4, :C => 0, :D => 0 }
+      expected = { :A => 2, :B => 4, :C => 0, :D => 0 }
 
-  #     expect(enigma_shift.generate_offset).to eq expected
-  #   end 
-  # end
+      expect(enigma_shift.generate_offset(enigma_shift.date)).to eq expected
+    end 
+  end
 end 
