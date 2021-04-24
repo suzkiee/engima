@@ -46,14 +46,22 @@ describe EnigmaShift do
     end
   end
 
-  describe '#generate_offset' do
+  describe '#generate_offsets' do
     it 'generates offset from date' do
+      allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
+      enigma_shift = EnigmaShift.new
+      expected = { :A => 2, :B => 4, :C => 0, :D => 0 }
+
+      expect(enigma_shift.generate_offsets(enigma_shift.date)).to eq expected
+    end 
+  end
+
+  describe '#convert_date' do
+    it 'converts date into digits' do
       enigma_shift = EnigmaShift.new
       allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
 
-      expected = { :A => 2, :B => 4, :C => 0, :D => 0 }
-
-      expect(enigma_shift.generate_offset(enigma_shift.date)).to eq expected
-    end 
+      expect(enigma_shift.convert_date(enigma_shift.date)).to eq '3929'
+    end
   end
 end 

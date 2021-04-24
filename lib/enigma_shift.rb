@@ -40,8 +40,17 @@ class EnigmaShift
     end
   end
 
-  def generate_offset(date)
-    require 'pry'; binding.pry
+  def generate_offsets(date)
+    number = date.split('/').join.to_i
+    last_four = (number ** 2).to_s[-4..-1]
+    enigma_offsets = { :A => nil, :B => nil, :C => nil, :D => nil}
+    
+    i = 0
+    enigma_offsets.each do |key, value|
+      enigma_offsets[key] = last_four[i].to_i
+      i += 1
+    end
+    enigma_offsets 
   end
 end
 
