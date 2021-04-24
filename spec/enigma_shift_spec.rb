@@ -58,10 +58,20 @@ describe EnigmaShift do
 
   describe '#convert_date' do
     it 'converts date into digits' do
-      enigma_shift = EnigmaShift.new
       allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
+      enigma_shift = EnigmaShift.new
 
-      expect(enigma_shift.convert_date(enigma_shift.date)).to eq '3929'
+      expect(enigma_shift.convert_date(enigma_shift.date)).to eq '2400'
+    end
+  end
+
+  describe '#generate_shifts' do
+    it 'assign sum of key and offset to shift' do
+      allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
+      enigma_shift = EnigmaShift.new('12345')
+      expected = { :A => 14, :B => 27, :C => 34, :D => 45}
+      
+      expect(enigma_shift.create_shift('12345', enigma_shift.date)).to eq expected 
     end
   end
 end 
