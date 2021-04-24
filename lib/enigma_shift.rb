@@ -17,24 +17,20 @@ class EnigmaShift
 
   def generate_enigma_keys(enigma_key = '')
     if enigma_key == ''
-      @enigma_key = generate_random_key_number
+      @enigma_key = generate_random_key_number   
     end
-
     pairs = convert_to_pairs(@enigma_key)
-
     enigma_keys = {
                    :A => nil,
                    :B => nil,
                    :C => nil,
                    :D => nil
     }
-
     i = 0
     enigma_keys.each do |key, value|
       enigma_keys[key] = pairs[i].to_i
       i += 1
     end
-
     enigma_keys
   end
 
