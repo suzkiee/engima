@@ -8,4 +8,8 @@ class Algorithm
     @enigma_key = enigma_key
     @date = date 
   end
+
+  def create_character_set 
+    ("a".."z").to_a << " "
+  end
 end
