@@ -73,7 +73,7 @@ describe EnigmaShift do
     end
   end
 
-  describe '#creat_shifts' do
+  describe '#create_shifts' do
     it 'assign sum of key and offset to shift' do
       allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
       enigma_shift = EnigmaShift.new('12345')
