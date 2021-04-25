@@ -6,13 +6,14 @@ class EnigmaShift
   def initialize(enigma_key = '', date = Date.today.strftime('%d/%m/%y') )
     @enigma_key = enigma_key
     @date = date
-    @shifts = {}
+    @shifts = []
   end
 
   def create_shifts(enigma_key, date)
     enigma_keys = generate_enigma_keys(enigma_key)
     offsets = generate_offsets(date)
-    @shifts = enigma_keys.merge(offsets) { |letter, key, offset| key + offset}
+    combined = enigma_keys.merge(offsets) { |letter, key, offset|  key + offset } 
+    combined.each { |key, value| @shifts << value }
   end
 
   def generate_enigma_keys(enigma_key)
