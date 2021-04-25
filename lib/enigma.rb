@@ -18,4 +18,14 @@ class Enigma
       :date       => date
     }
   end
+
+  def decrypt(ciphertext, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
+    algorithm = Algorithm.new(ciphertext, enigma_key, date) 
+    original_message = algorithm.shift_backward(ciphertext, enigma_key, date) #class method?
+    decrpyted = {
+      :decryption => original_message,
+      :key        => enigma_key,
+      :date       => date
+    }
+  end
 end
