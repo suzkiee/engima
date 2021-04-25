@@ -11,36 +11,15 @@ class Algorithm
     @character_set = ('a'..'z').to_a << ' '
   end
 
-  # def shift_forward(message, enigma_key, date)
-  #   enigma_shift = EnigmaShift.new(enigma_key, date)
-  #   enigma_shift.create_shifts(enigma_key, date)
-  #   shifts = enigma_shift.shifts
-  #   encrypted_string = ''
-  #   message = message.downcase
-  #   require 'pry'; binding.pry
-
-  #   message.each_char do |char|
-  #     require 'pry'; binding.pry
-  #     if @character_set.include?(char) 
-  #         # shift.times do |char|
-  #         # char.next
-  #         require 'pry'; binding.pry
-  #     end
-  #   end
-    # starting at the input of the character, rotate across the character set
-    ## if the character is not included in set, return same character
-    # return array of adjusted letters
-    # join array into string 
-  # end
-
   def shift_forward(message, enigma_key, date)
+    ## maybe module?
     enigma_shift = EnigmaShift.new(enigma_key, date)
     enigma_shift.create_shifts(enigma_key, date)
     shifts = enigma_shift.shifts
     encrypted_string = ''
-    message = message.downcase
+    downcased_string = message.downcase
 
-    message.each_char.with_index do |char, index|
+    downcased_string.each_char.with_index do |char, index|
       if @character_set.include?(char)
         shifted_char_index = shifts[index % 4]
         new_index = (@character_set.index(char) + shifted_char_index) % character_set.length
@@ -50,5 +29,23 @@ class Algorithm
       end
     end
     encrypted_string
+  end
+
+  def shift_backward(encrypted_string, enigma_key, date)
+    enigma_shift = EnigmaShift.new(enigma_key, date)
+    enigma_shift.create_shifts(enigma_key, date)
+    shifts = enigma_shift.shifts
+    original_message = ''
+    
+    encrypted_string.each_char.with_index do |char, index|
+      if character_set.include?(char)
+        shifted_char_index = shifts[index % 4]
+        new_index= (@character_set.index(char) - shifted_char_index) % character_set.length
+        original_message << character_set[new_index]
+      else
+        original_message << char
+      end
+    end
+    original_message
   end
 end

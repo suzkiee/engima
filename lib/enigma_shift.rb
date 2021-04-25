@@ -3,7 +3,7 @@ class EnigmaShift
               :date,
               :shifts
 
-  def initialize(enigma_key = '', date = Date.today.strftime('%d/%m/%y') )
+  def initialize(enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
     @enigma_key = enigma_key
     @date = date
     @shifts = []
@@ -21,7 +21,7 @@ class EnigmaShift
       enigma_key = generate_random_key_number   
     end
     pairs = convert_to_pairs(enigma_key)
-    enigma_keys = { :A => nil, :B => nil, :C => nil, :D => nil}
+    enigma_keys = { :A => nil, :B => nil, :C => nil, :D => nil }
     i = 0
     enigma_keys.each do |key, value|
       enigma_keys[key] = pairs[i].to_i
@@ -44,7 +44,7 @@ class EnigmaShift
 
   def generate_offsets(date)
     last_four = convert_date(date)
-    enigma_offsets = { :A => nil, :B => nil, :C => nil, :D => nil}
+    enigma_offsets = { :A => nil, :B => nil, :C => nil, :D => nil }
     i = 0
     enigma_offsets.each do |key, value|
       enigma_offsets[key] = last_four[i].to_i
