@@ -1,3 +1,5 @@
+require 'enigma_shift'
+
 class Algorithm
   attr_reader :message,
               :enigma_key,

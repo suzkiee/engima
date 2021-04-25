@@ -19,4 +19,17 @@ describe Enigma do
       expect(enigma.date).to eq '27/08/20'
     end
   end
-end
+
+  describe '#encrypt' do
+    it 'encrypts message' do
+      enigma = Enigma.new('Hello World', '02715', '040895')
+      expected = {
+        :encryption => 'keder ohulw',
+        :key        => '02715',
+        :date       => '040895'
+      }
+
+      expect(enigma.encrypt('Hello World', '02715', '040895')).to eq expected
+    end
+  end
+end 

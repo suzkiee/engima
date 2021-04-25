@@ -8,4 +8,14 @@ class Enigma
     @enigma_key = enigma_key 
     @date = date 
   end
+
+  def encrypt(message, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
+    algorithm = Algorithm.new(message, enigma_key, date) 
+    ciphertext = algorithm.shift_forward(message, enigma_key, date) #class method?
+    encrpyted = {
+      :encryption => ciphertext,
+      :key        => enigma_key,
+      :date       => date
+    }
+  end
 end
