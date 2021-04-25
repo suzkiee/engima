@@ -10,13 +10,20 @@ describe EnigmaShift do
       expect(enigma_shift).is_a? EnigmaShift
     end
 
-    it 'has attributes' do
+    it 'has default attributes' do
       allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
       enigma_shift = EnigmaShift.new
 
       expect(enigma_shift.enigma_key).to eq ''
-      expect(enigma_shift.date).to eq ('27/08/20')
-      expect(enigma_shift.shifts).to eq ({})
+      expect(enigma_shift.date).to eq '27/08/20'
+      expect(enigma_shift.shifts).to eq ([])
+    end
+
+    it 'has attributes' do
+      enigma_shift = EnigmaShift.new('12345', '27/08/20')
+
+      expect(enigma_shift.enigma_key).to eq '12345'
+      expect(enigma_shift.date).to eq '27/08/20'
     end
   end
 
@@ -66,13 +73,13 @@ describe EnigmaShift do
     end
   end
 
-  describe '#generate_shifts' do
+  describe '#create_shifts' do
     it 'assign sum of key and offset to shift' do
       allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
       enigma_shift = EnigmaShift.new('12345')
 
       enigma_shift.create_shifts('12345', enigma_shift.date)
-      expected = { :A => 14, :B => 27, :C => 34, :D => 45}
+      expected = [14, 27, 34, 45]
 
       expect(enigma_shift.shifts).to eq expected 
     end
