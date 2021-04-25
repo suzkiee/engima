@@ -16,7 +16,6 @@ class EnigmaShift
   end
 
   def generate_enigma_keys(enigma_key)
-
     if enigma_key == ''
       enigma_key = generate_random_key_number   
     end

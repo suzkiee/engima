@@ -34,8 +34,16 @@ describe Algorithm do
       expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", 
                   "j", "k", "l", "m", "n", "o", "p", "q", "r", 
                   "s", "t", "u", "v", "w", "x", "y", "z", " "]
-                  
+
       expect(algorithm.create_character_set).to eq expected 
+    end
+  end
+
+  describe '#shift_forward' do
+    it 'shifts letters forward' do
+      algorithm = Algorithm.new('Hello World', '02715', '040895')
+
+      expect(algorithm.shift_forward('Hello World', '02715', '040895')).to eq 'keder ohulw'
     end
   end
 end

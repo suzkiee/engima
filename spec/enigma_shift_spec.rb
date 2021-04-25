@@ -10,7 +10,7 @@ describe EnigmaShift do
       expect(enigma_shift).is_a? EnigmaShift
     end
 
-    it 'has deafult attributes' do
+    it 'has default attributes' do
       allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
       enigma_shift = EnigmaShift.new
 
