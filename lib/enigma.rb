@@ -10,7 +10,7 @@ class Enigma
   end
 
   def encrypt(message, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
-    enigma_key = EnigmaShift.generate_random_key_number if enigma_key == ''
+    enigma_key = EnigmaShift.random_key if enigma_key == ''
     ciphertext = Algorithm.shift_forward(message, enigma_key, date) #class method?
 
     encrpyted = {
@@ -21,7 +21,7 @@ class Enigma
   end
 
   def decrypt(ciphertext, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
-    enigma_key = EnigmaShift.generate_random_key_number if enigma_key == ''
+    enigma_key = EnigmaShift.random_key if enigma_key == ''
     original_message = Algorithm.shift_backward(ciphertext, enigma_key, date) #class method?
     decrpyted = {
       :decryption => original_message,
