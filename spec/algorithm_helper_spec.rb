@@ -3,11 +3,11 @@ require 'date'
 require './lib/algorithm_helper'
 
 describe AlgorithmHelper do
-  describe '#initialize' do
+  describe '::initialize' do
     it 'exists' do
       algorithm_helper = AlgorithmHelper.new
 
-      expect(algorithm_helper).is_a? EnigmaShift
+      expect(algorithm_helper).is_a? AlgorithmHelper
     end
 
     it 'has attributes' do
@@ -55,7 +55,7 @@ describe AlgorithmHelper do
   describe '#create_shifts' do
     it 'assign sum of key and offset to shift' do
       algorithm_helper = AlgorithmHelper.new
-  t(algorithm_helper.create_shifts('12345', '270820')
+      algorithm_helper.create_shifts('12345', '270820')
       expected = [14, 27, 34, 45]
 
       expect(algorithm_helper.shifts).to eq expected 
