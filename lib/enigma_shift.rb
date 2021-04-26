@@ -1,4 +1,4 @@
-class EnigmaShift
+class Alogrithm
   attr_reader :shifts
 
   def initialize
@@ -14,36 +14,38 @@ class EnigmaShift
 
   def generate_enigma_keys(enigma_key)
     pairs = convert_to_pairs(enigma_key)
-    enigma_keys = { :A => nil, :B => nil, :C => nil, :D => nil }
-    i = 0
-    enigma_keys.each do |key, value|
-      enigma_keys[key] = pairs[i].to_i
-      i += 1
-    end
+    enigma_keys = create_letter_hash
+    assign_to_letter(enigma_keys, pairs)
     enigma_keys
   end
 
-  def self.random_key
-    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    new_key = numbers.sample(5)
-    new_key.join 
+  def generate_offsets(date)
+    last_four = convert_date(date)
+    enigma_offsets = create_letter_hash 
+    assign_to_letter(enigma_offsets, last_four)
+    enigma_offsets 
+  end
+
+  def assign_to_letter(letter_hash, digits)
+    i = 0
+    letter_hash.each_with_index do |(letter, value), i|
+      letter_hash[letter] = digits[i].to_i
+      i += 1
+    end
+  end
+
+  def create_letter_hash
+    hash = Hash.new
+    ('A'..'D').each do |letter| 
+      hash[letter.to_sym] = nil
+    end 
+    hash
   end
 
   def convert_to_pairs(enigma_key)
     (0...enigma_key.length - 1).map do |index|
         enigma_key[index..index + 1]
     end
-  end
-
-  def generate_offsets(date)
-    last_four = convert_date(date)
-    enigma_offsets = { :A => nil, :B => nil, :C => nil, :D => nil }
-    i = 0
-    enigma_offsets.each do |key, value|
-      enigma_offsets[key] = last_four[i].to_i
-      i += 1
-    end
-    enigma_offsets 
   end
 
   def convert_date(date)
