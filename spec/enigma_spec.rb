@@ -3,7 +3,7 @@ require './lib/enigma'
 require './lib/algorithm'
 
 describe Enigma do
-  describe '#initialize' do
+  describe '::initialize' do
     it 'exists' do
       enigma = Enigma.new
       
@@ -38,7 +38,7 @@ describe Enigma do
     it 'encrypts message with only message' do
       allow(Date).to receive(:today).and_return(Date.new(1995, 8, 04))
       enigma = Enigma.new
-      allow(EnigmaShift).to receive(:random_key) {'12345'}
+      allow(enigma).to receive(:random_key) {'12345'}
       expected = {
         :encryption => 'uauha!ekdhm',
         :key        => '12345',
@@ -73,4 +73,13 @@ describe Enigma do
       expect(enigma.decrypt('keder ohulw', '02715')).to eq expected
     end
   end  
+
+  describe '#random key'do
+    it 'generates random 5 digit number as string' do 
+      enigma = Enigma.new
+
+      expect(enigma.random_key).is_a? String
+      expect(enigma.random_key.length).to eq 5
+    end
+  end
 end
