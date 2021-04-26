@@ -1,11 +1,7 @@
 class EnigmaShift
-  attr_reader :enigma_key,
-              :date,
-              :shifts
+  attr_reader :shifts
 
-  def initialize(enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
-    @enigma_key = enigma_key
-    @date = date
+  def initialize
     @shifts = []
   end
 
