@@ -1,4 +1,4 @@
-require 'enigma_shift'
+require './lib/enigma_shift'
 
 class Algorithm
   attr_reader :message,
@@ -43,7 +43,7 @@ class Algorithm
       if character_set.include?(char)
         shifted_char_index = shifts[index % 4]
         new_index= (@character_set.index(char) - shifted_char_index) % character_set.length
-        original_message << character_set[new_index]
+        original_message << @character_set[new_index]
       else
         original_message << char
       end

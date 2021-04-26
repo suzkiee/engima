@@ -50,7 +50,7 @@ describe Algorithm do
       expect(algorithm.shift_forward('Hello World', '02715', '040895')).to eq 'keder ohulw'
     end
 
-    it 'encyrpts character as itself if character not in chracter set' do
+    it 'returns character as itself if character not in chracter set' do
       algorithm = Algorithm.new('Hello World!', '02715', '040895')
 
       expect(algorithm.shift_forward('Hello World!', '02715', '040895')).to eq 'keder ohulw!'
@@ -64,7 +64,7 @@ describe Algorithm do
       expect(algorithm.shift_backward('keder ohulw', '02715', '040895')).to eq 'hello world'
     end
 
-    it 'decrypts character as itself if character not in chracter set' do
+    it 'returns character as itself if character not in chracter set' do
       algorithm = Algorithm.new('Hello World', '02715', '040895')
 
       expect(algorithm.shift_backward('keder ohulw!', '02715', '040895')).to eq 'hello world!'

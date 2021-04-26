@@ -1,21 +1,22 @@
+require './lib/algorithm'
+
 class Enigma
   attr_reader :message, 
               :enigma_key,
               :date
 
-  def initialize(message, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
+  def initialize
     @message = message 
-    @enigma_key = enigma_key 
-    @date = date 
   end
 
-  def encrypt(message, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
+  def encrypt(message, enigma_key = '', date = Date.today.strftime('%d/%m/%y') )
     algorithm = Algorithm.new(message, enigma_key, date) 
     ciphertext = algorithm.shift_forward(message, enigma_key, date) #class method?
+
     encrpyted = {
       :encryption => ciphertext,
       :key        => enigma_key,
-      :date       => date
+      :date       => date.gsub('/', '')
     }
   end
 
@@ -25,7 +26,7 @@ class Enigma
     decrpyted = {
       :decryption => original_message,
       :key        => enigma_key,
-      :date       => date
+      :date       => date.gsub('/','')
     }
   end
 end
