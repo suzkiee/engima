@@ -3,18 +3,11 @@ require './lib/enigma'
 require './lib/algorithm'
 
 describe Enigma do
-  describe 'initialize' do
+  describe '#initialize' do
     it 'exists' do
       enigma = Enigma.new
       
       expect(enigma).is_a? Enigma
-    end
-    
-    xit 'has attributes' do
-      allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
-      enigma = Enigma.new
-
-      expect(enigma.message).to eq 'Hello World'
     end
   end
 

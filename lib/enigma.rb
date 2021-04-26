@@ -1,13 +1,13 @@
 require './lib/algorithm'
 
 class Enigma
-  attr_reader :message, 
-              :enigma_key,
-              :date
+  # attr_reader :message, 
+  #             :enigma_key,
+  #             :date
 
-  def initialize
-    @message = message
-  end
+  # def initialize
+  #   @message = message
+  # end
 
   def encrypt(message, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
     enigma_key = EnigmaShift.random_key if enigma_key == ''

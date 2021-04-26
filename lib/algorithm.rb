@@ -1,19 +1,9 @@
 require './lib/enigma_shift'
 
 class Algorithm
-  attr_reader :message,
-              :enigma_key,
-              :date,
-              :character_set
-
-  def initialize(message, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
-    @message = message
-    @enigma_key = enigma_key
-    @date = date 
-  end
 
   def self.shift_forward(message, enigma_key, date)
-    enigma_shift = EnigmaShift.new(enigma_key, date)
+    enigma_shift = EnigmaShift.new
     enigma_shift.create_shifts(enigma_key, date)
     shifts = enigma_shift.shifts
     character_set = ('a'..'z').to_a << ' '
@@ -33,7 +23,7 @@ class Algorithm
   end
 
   def self.shift_backward(encrypted_string, enigma_key, date)
-    enigma_shift = EnigmaShift.new(enigma_key, date)
+    enigma_shift = EnigmaShift.new
     enigma_shift.create_shifts(enigma_key, date)
     shifts = enigma_shift.shifts
     character_set = ('a'..'z').to_a << ' '
