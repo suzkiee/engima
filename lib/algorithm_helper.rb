@@ -1,4 +1,4 @@
-class Alogrithm
+class AlogrithmHelper
   attr_reader :shifts
 
   def initialize
