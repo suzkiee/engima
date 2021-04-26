@@ -3,27 +3,20 @@ require 'date'
 require './lib/enigma_shift'
 
 describe EnigmaShift do
-  describe '#instantiation' do
+  describe '#initialize' do
     it 'exists' do
       enigma_shift = EnigmaShift.new
 
       expect(enigma_shift).is_a? EnigmaShift
     end
 
-    it 'has default attributes' do
+    it 'has attributes' do
       allow(Date).to receive(:today).and_return(Date.new(2020, 8, 27))
       enigma_shift = EnigmaShift.new
 
       expect(enigma_shift.enigma_key).to eq ''
-      expect(enigma_shift.date).to eq '27/08/20'
+      expect(enigma_shift.date).to eq ('27/08/20')
       expect(enigma_shift.shifts).to eq ([])
-    end
-
-    it 'has attributes' do
-      enigma_shift = EnigmaShift.new('12345', '27/08/20')
-
-      expect(enigma_shift.enigma_key).to eq '12345'
-      expect(enigma_shift.date).to eq '27/08/20'
     end
   end
 
@@ -33,15 +26,6 @@ describe EnigmaShift do
       expected = {:A => 02, :B => 23, :C => 34, :D => 45}
  
       expect(enigma_shift.generate_enigma_keys('02345')).to eq expected
-    end
-
-    it 'can generate keys with random key numbers' do
-      enigma_shift = EnigmaShift.new
-      enigma_key = ''
-      allow(enigma_shift).to receive(:generate_random_key_number) {'12345'}
-      expected = {:A => 12, :B => 23, :C => 34, :D => 45}
-  
-      expect(enigma_shift.generate_enigma_keys(enigma_key)).to eq expected 
     end
   end
 
