@@ -17,9 +17,6 @@ class EnigmaShift
   end
 
   def generate_enigma_keys(enigma_key)
-    if enigma_key == ''
-      enigma_key = generate_random_key_number   
-    end
     pairs = convert_to_pairs(enigma_key)
     enigma_keys = { :A => nil, :B => nil, :C => nil, :D => nil }
     i = 0
@@ -30,7 +27,7 @@ class EnigmaShift
     enigma_keys
   end
 
-  def generate_random_key_number
+  def self.random_key
     numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     new_key = numbers.sample(5)
     new_key.join 

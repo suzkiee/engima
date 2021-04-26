@@ -3,7 +3,7 @@ require './lib/enigma'
 require './lib/algorithm'
 
 describe Enigma do
-  describe '#instantiation' do
+  describe 'initialize' do
     it 'exists' do
       enigma = Enigma.new
       
@@ -45,13 +45,14 @@ describe Enigma do
     it 'encrypts message with only message' do
       allow(Date).to receive(:today).and_return(Date.new(1995, 8, 04))
       enigma = Enigma.new
+      allow(EnigmaShift).to receive(:random_key) {'12345'}
       expected = {
-        :encryption => 'keder ohulw',
-        :key        => '02715',
+        :encryption => 'uauha!ekdhm',
+        :key        => '12345',
         :date       => '040895'
       }
-
-      expect(enigma.encrypt('Hello World', '02715')).to eq expected
+ 
+      expect(enigma.encrypt('Hello!World')).to eq expected
     end
   end
 
