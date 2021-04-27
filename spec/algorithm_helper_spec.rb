@@ -3,11 +3,11 @@ require 'date'
 require './lib/algorithm_helper'
 
 describe AlgorithmHelper do
-  describe '#initialize' do
+  describe '::initialize' do
     it 'exists' do
       algorithm_helper = AlgorithmHelper.new
 
-      expect(algorithm_helper).is_a? EnigmaShift
+      expect(algorithm_helper).is_a? AlgorithmHelper
     end
 
     it 'has attributes' do
@@ -21,7 +21,7 @@ describe AlgorithmHelper do
     it 'can generate keys wtih enigma key' do
       algorithm_helper = AlgorithmHelper.new
       expected = {:A => 02, :B => 23, :C => 34, :D => 45}
- 
+
       expect(algorithm_helper.generate_enigma_keys('02345')).to eq expected
     end
   end
@@ -55,10 +55,10 @@ describe AlgorithmHelper do
   describe '#create_shifts' do
     it 'assign sum of key and offset to shift' do
       algorithm_helper = AlgorithmHelper.new
-  t(algorithm_helper.create_shifts('12345', '270820')
+      algorithm_helper.create_shifts('12345', '270820')
       expected = [14, 27, 34, 45]
 
-      expect(algorithm_helper.shifts).to eq expected 
+      expect(algorithm_helper.shifts).to eq expected
     end
   end
 
@@ -67,7 +67,7 @@ describe AlgorithmHelper do
       algorithm_helper = AlgorithmHelper.new
       expected = { :A => nil, :B => nil, :C => nil, :D => nil}
       
-      expect(algorithm_helper.create_letter_hash).to eq expected 
+      expect(algorithm_helper.create_letter_hash).to eq expected
     end
   end
 
@@ -77,8 +77,8 @@ describe AlgorithmHelper do
       letter_hash = { :A => nil, :B => nil, :C => nil, :D => nil}
       digits = [12, 13 , 14, 15]
       expected = { :A => 12, :B => 13, :C => 14, :D => 15}
-    
-      expect(algorithm_helper.assign_to_letter(letter_hash, digits)).to eq expected 
+
+      expect(algorithm_helper.assign_to_letter(letter_hash, digits)).to eq expected
     end
   end
-end 
+end

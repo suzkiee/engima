@@ -1,37 +1,51 @@
 require 'rspec'
 require './lib/algorithm'
-require './lib/enigma_shift'
+require './lib/algorithm_helper'
 
 describe Algorithm do
-  describe '#initialize' do
+  describe '::initialize' do
     it 'exists' do
       algorithm = Algorithm.new
 
-      expect(algorithm).is_a? Algorithm 
+      expect(algorithm).is_a? Algorithm
     end
   end
 
-  describe '#shift_forward' do
+  describe '::shift' do
     it 'shifts letters forward' do
+      message = 'Hello World'
+      enigma_key = '02175'
+      date = '040895'
+      crypt = 'encrypt'
 
-      expect(Algorithm.shift_forward('Hello World', '02715', '040895')).to eq 'keder ohulw'
+      expect(Algorithm.shift(message, enigma_key, date, crypt)).to eq 'keder ohulw'
     end
 
     it 'encyrpts character as itself if character not in chracter set' do
+      message = 'Hello World!'
+      enigma_key = '02175'
+      date = '040895'
+      crypt = 'encrypt'
 
-      expect(Algorithm.shift_forward('Hello World!', '02715', '040895')).to eq 'keder ohulw!'
+      expect(Algorithm.shift(message, enigma_key, date, crypt)).to eq 'keder ohulw!'
     end
-  end
 
-  describe '#shift_backward' do
     it 'shifts letters backward' do
+      ciphertext = 'keder ohulw'
+      enigma_key = '02175'
+      date = '040895'
+      crypt = 'decrypt'
 
-      expect(Algorithm.shift_backward('keder ohulw', '02715', '040895')).to eq 'hello world'
+      expect(Algorithm.shift(ciphertext, enigma_key, date, crypt)).to eq 'hello world'
     end
 
-    it 'decrypts character as itself if character not in chracter set' do
+    it 'decrypts character as itself if character not in character set' do
+      ciphertext = 'keder ohulw'
+      enigma_key = '02175'
+      date = '040895'
+      crypt = 'decrypt'
 
-      expect(Algorithm.shift_backward('keder ohulw!', '02715', '040895')).to eq 'hello world!'
+      expect(Algorithm.shift(ciphertext, enigma_key, date, crypt)).to eq 'hello world!'
     end
   end
 end
