@@ -18,7 +18,7 @@ describe Algorithm do
       enigma_key = '02715'
       date = '040895'
       crypt = 'encrypt'
-
+      
       expect(algorithm.shift(input, enigma_key, date, crypt)).to eq 'keder ohulw'
     end
 
@@ -76,17 +76,17 @@ describe Algorithm do
     it 'creates encrypted string output' do
       algorithm = Algorithm.new
       input = 'Hello World'
-      shifts = [3, 27, 73, 20]
       crypt = 'encrypt'
+      shifts = [3, 27, 73, 20]
 
       expect(algorithm.translate_input(input, shifts, crypt)).to eq 'keder ohulw'
     end
 
     it 'creates decrypted string output' do
       algorithm = Algorithm.new
-      input = 'Hello World'
+      input = 'keder ohulw'
+      crypt = 'decrypt'
       shifts = [3, 27, 73, 20]
-      crypt = 'encrypt'
 
       expect(algorithm.translate_input(input, shifts, crypt)).to eq 'hello world'
     end
