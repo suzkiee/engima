@@ -22,5 +22,5 @@ class Algorithm
       end
     end
     output
-  end 
+  end
 end
