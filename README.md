@@ -20,7 +20,7 @@ In this project, I've used Ruby to build a tool that can encrypt and decrypts me
 - [x] No classes are unreasonably small or large, or contain knowledge/information/behavior that they shouldn’t know about
 
 ### Ruby Convention: 2.8
--[] Code is mostly properly indented, spaced, and lines are not excessively long.
+- [] Code is mostly properly indented, spaced, and lines are not excessively long.
 - [x] Class, method, variable, and file names follow convention.
 - [x] Some enumerables/data structures chosen are the most efficient tool for a given job
 - [x] At least one hash is implemented in a way that makes logical sense.
