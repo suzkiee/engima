@@ -38,7 +38,7 @@ describe Enigma do
     it 'encrypts message with only message' do
       allow(Date).to receive(:today).and_return(Date.new(1995, 8, 04))
       enigma = Enigma.new
-      allow(enigma).to receive(:random_key) {'12345'}
+      allow(enigma).to receive(:random_key) { '12345' }
       expected = {
         :encryption => 'uauha!ekdhm',
         :key        => '12345',
