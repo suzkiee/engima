@@ -74,8 +74,8 @@ describe Enigma do
     end
   end  
 
-  describe '#random key'do
-    it 'generates random 5 digit number as string' do 
+  describe '#random key' do
+    it 'generates random 5 digit number as string' do
       enigma = Enigma.new
 
       expect(enigma.random_key).is_a? String
