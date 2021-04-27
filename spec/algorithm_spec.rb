@@ -13,39 +13,39 @@ describe Algorithm do
 
   describe '::shift' do
     it 'shifts letters forward' do
-      message = 'Hello World'
-      enigma_key = '02175'
+      input = 'Hello World'
+      enigma_key = '02715'
       date = '040895'
       crypt = 'encrypt'
 
-      expect(Algorithm.shift(message, enigma_key, date, crypt)).to eq 'keder ohulw'
+      expect(Algorithm.shift(input, enigma_key, date, crypt)).to eq 'keder ohulw'
     end
 
     it 'encyrpts character as itself if character not in chracter set' do
-      message = 'Hello World!'
-      enigma_key = '02175'
+      input = 'Hello World!'
+      enigma_key = '02715'
       date = '040895'
       crypt = 'encrypt'
-
-      expect(Algorithm.shift(message, enigma_key, date, crypt)).to eq 'keder ohulw!'
+      
+      expect(Algorithm.shift(input, enigma_key, date, crypt)).to eq 'keder ohulw!'
     end
 
     it 'shifts letters backward' do
-      ciphertext = 'keder ohulw'
-      enigma_key = '02175'
+      input = 'keder ohulw'
+      enigma_key = '02715'
       date = '040895'
       crypt = 'decrypt'
 
-      expect(Algorithm.shift(ciphertext, enigma_key, date, crypt)).to eq 'hello world'
+      expect(Algorithm.shift(input, enigma_key, date, crypt)).to eq 'hello world'
     end
 
     it 'decrypts character as itself if character not in character set' do
-      ciphertext = 'keder ohulw'
-      enigma_key = '02175'
+      input = 'keder ohulw!'
+      enigma_key = '02715'
       date = '040895'
       crypt = 'decrypt'
 
-      expect(Algorithm.shift(ciphertext, enigma_key, date, crypt)).to eq 'hello world!'
+      expect(Algorithm.shift(input, enigma_key, date, crypt)).to eq 'hello world!'
     end
   end
 end
