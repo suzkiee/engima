@@ -16,7 +16,7 @@ describe Algorithm do
       message = 'Hello World'
       enigma_key = '02175'
       date = '040895'
-      crpyt = 'encrypt'
+      crypt = 'encrypt'
 
       expect(Algorithm.shift(message, enigma_key, date, crypt)).to eq 'keder ohulw'
     end
@@ -25,7 +25,7 @@ describe Algorithm do
       message = 'Hello World!'
       enigma_key = '02175'
       date = '040895'
-      crpyt = 'encrypt'
+      crypt = 'encrypt'
 
       expect(Algorithm.shift(message, enigma_key, date, crypt)).to eq 'keder ohulw!'
     end
@@ -34,7 +34,7 @@ describe Algorithm do
       ciphertext = 'keder ohulw'
       enigma_key = '02175'
       date = '040895'
-      crpyt = 'decrypt'
+      crypt = 'decrypt'
 
       expect(Algorithm.shift(ciphertext, enigma_key, date, crypt)).to eq 'hello world'
     end
@@ -43,7 +43,7 @@ describe Algorithm do
       ciphertext = 'keder ohulw'
       enigma_key = '02175'
       date = '040895'
-      crpyt = 'decrypt'
+      crypt = 'decrypt'
 
       expect(Algorithm.shift(ciphertext, enigma_key, date, crypt)).to eq 'hello world!'
     end
