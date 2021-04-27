@@ -62,7 +62,7 @@ describe Enigma do
     end
 
     it 'decrypts message with key' do
-      allow(Date).to receive(:today).and_return(Date.new(1995, 8, 04))
+      allow(Date).to receive(:today).and_return(Date.new(1994, 8, 04))
       enigma = Enigma.new
       expected = {
         :decryption => 'hello world',

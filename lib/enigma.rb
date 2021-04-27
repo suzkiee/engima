@@ -4,7 +4,6 @@ class Enigma
   def encrypt(message, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
     enigma_key = random_key if enigma_key == ''
     ciphertext = Algorithm.shift(message, enigma_key, date, 'encrypt') 
-
     encrpyted = {
       :encryption => ciphertext,
       :key        => enigma_key,

@@ -27,7 +27,7 @@ describe Algorithm do
       expect(Algorithm.shift('keder ohulw', '02715', '040895', 'decrypt')).to eq 'hello world'
     end
     
-    it 'decrypts character as itself if character not in chracter set' do
+    it 'decrypts character as itself if character not in character set' do
 
      expect(Algorithm.shift('keder ohulw!', '02715', '040895', 'decrypt')).to eq 'hello world!'
     end
