@@ -13,21 +13,23 @@ describe Algorithm do
 
   describe '::shift' do
     it 'shifts letters forward' do
+      algorithm = Algorithm.new
       input = 'Hello World'
       enigma_key = '02715'
       date = '040895'
       crypt = 'encrypt'
 
-      expect(Algorithm.shift(input, enigma_key, date, crypt)).to eq 'keder ohulw'
+      expect(algorithm.shift(input, enigma_key, date, crypt)).to eq 'keder ohulw'
     end
 
     it 'encyrpts character as itself if character not in chracter set' do
+      algorithm = Algorithm.new
       input = 'Hello World!'
       enigma_key = '02715'
       date = '040895'
       crypt = 'encrypt'
       
-      expect(Algorithm.shift(input, enigma_key, date, crypt)).to eq 'keder ohulw!'
+      expect(algorithm.shift(input, enigma_key, date, crypt)).to eq 'keder ohulw!'
     end
 
     it 'shifts letters backward' do
