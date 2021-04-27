@@ -18,7 +18,7 @@ describe Algorithm do
       enigma_key = '02715'
       date = '040895'
       crypt = 'encrypt'
-      
+
       expect(algorithm.shift(input, enigma_key, date, crypt)).to eq 'keder ohulw'
     end
 
