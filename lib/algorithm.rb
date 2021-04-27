@@ -8,7 +8,8 @@ class Algorithm
 
   def translate_input(input, shifts, crypt)
     output = ''
-    input.downcase.each_char.with_index do |char, index|
+    downcased = input.downcase
+    downcased.each_char.with_index do |char, index|
       if character_set.include?(char)
         shifted_index = shifts[index % 4]
         if crypt == 'decrypt'

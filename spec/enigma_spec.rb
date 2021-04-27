@@ -44,7 +44,7 @@ describe Enigma do
         :key        => '12345',
         :date       => '040895'
       }
- 
+
       expect(enigma.encrypt('Hello!World')).to eq expected
     end
   end
@@ -86,7 +86,7 @@ describe Enigma do
   describe '#algorithm' do
     it 'creates instance of algorithm' do
       enigma = Enigma.new
-      
+
       expect(enigma.algorithm).is_a? Algorithm
     end
   end
