@@ -82,4 +82,12 @@ describe Enigma do
       expect(enigma.random_key.length).to eq 5
     end
   end
+
+  describe '#algorithm' do
+    it 'creates instance of algorithm' do
+      enigma = Enigma.new
+      
+      expect(enigma.algorithm).is_a? Algorithm
+    end
+  end
 end

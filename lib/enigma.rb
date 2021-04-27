@@ -1,9 +1,9 @@
 require './lib/algorithm'
 
 class Enigma
-  def encrypt(message, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
+  def encrypt(input, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
     enigma_key = random_key if enigma_key == ''
-    ciphertext = Algorithm.shift(message, enigma_key, date, 'encrypt')
+    ciphertext = algorithm.shift(input, enigma_key, date, 'encrypt')
     encrpyted = {
       :encryption => ciphertext,
       :key        => enigma_key,
@@ -11,9 +11,9 @@ class Enigma
     }
   end
 
-  def decrypt(ciphertext, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
+  def decrypt(input, enigma_key = '', date = Date.today.strftime('%d/%m/%y'))
     enigma_key = random_key if enigma_key == ''
-    original_message = Algorithm.shift(ciphertext, enigma_key, date, 'decrypt')
+    original_message = algorithm.shift(input, enigma_key, date, 'decrypt')
     decrpyted = {
       :decryption => original_message,
       :key        => enigma_key,
@@ -23,5 +23,9 @@ class Enigma
 
   def random_key
     (0..9).to_a.sample(5).join
+  end
+
+  def algorithm
+    Algorithm.new
   end
 end
