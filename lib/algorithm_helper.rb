@@ -44,7 +44,7 @@ class AlgorithmHelper
 
   def convert_to_pairs(enigma_key)
     (0...enigma_key.length - 1).map do |index|
-        enigma_key[index..index + 1]
+      enigma_key[index..index + 1]
     end
   end
 
