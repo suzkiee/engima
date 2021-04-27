@@ -7,7 +7,7 @@ describe Algorithm do
     it 'exists' do
       algorithm = Algorithm.new
 
-      expect(algorithm).is_a? Algorithm 
+      expect(algorithm).is_a? Algorithm
     end
   end
   

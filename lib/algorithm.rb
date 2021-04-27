@@ -15,7 +15,7 @@ class Algorithm
           new_index = (character_set.index(char) - shifted_char_index) % character_set.length
         elsif crypt == 'encrypt'
           new_index = (character_set.index(char) + shifted_char_index) % character_set.length
-        end 
+        end
         output << character_set[new_index]
       else
         output << char
