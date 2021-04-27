@@ -10,7 +10,7 @@ describe Algorithm do
       expect(algorithm).is_a? Algorithm
     end
   end
-  
+
   describe '::shift' do
     it 'shifts letters forward' do
       message = 'Hello World'
@@ -29,7 +29,7 @@ describe Algorithm do
 
       expect(Algorithm.shift(message, enigma_key, date, crypt)).to eq 'keder ohulw!'
     end
-    
+
     it 'shifts letters backward' do
       ciphertext = 'keder ohulw'
       enigma_key = '02175'
@@ -38,7 +38,7 @@ describe Algorithm do
 
       expect(Algorithm.shift(ciphertext, enigma_key, date, crypt)).to eq 'hello world'
     end
-    
+
     it 'decrypts character as itself if character not in character set' do
       ciphertext = 'keder ohulw'
       enigma_key = '02175'
